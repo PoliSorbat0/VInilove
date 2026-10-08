@@ -1,6 +1,20 @@
-# React + Vite
+# Vinilover (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Tienda de vinilos — Evaluación Parcial 2 (DSY1104).
+
+## Cómo correrlo
+
+```bash
+npm install
+npm run dev
+```
+
+## División del trabajo
+
+- **React / pantallas:** `src/pages/`, `src/components/`, `src/App.jsx`
+- **Base de datos (Firebase):** `src/data/firebase.js` y `src/data/productos.js`
+
+Las páginas están creadas vacías a propósito. No borrar `node_modules` del `.gitignore`.
 
 Currently, two official plugins are available:
 
