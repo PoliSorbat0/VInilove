@@ -1,8 +1,13 @@
-﻿export default function CompraError() {
+﻿import { Link } from 'react-router-dom'
+
+export default function CompraError() {
   return (
-    <section>
+    <section className="text-center">
       <h1>No se pudo realizar el pago</h1>
-      <p>Página en construcción.</p>
+      <p>El carrito estaba vacío o algo falló. Intentá de nuevo.</p>
+      <Link to="/carrito" className="btn btn-outline-dark">
+        Volver al carrito
+      </Link>
     </section>
   )
 }

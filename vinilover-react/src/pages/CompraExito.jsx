@@ -1,8 +1,13 @@
-﻿export default function CompraExito() {
+﻿import { Link } from 'react-router-dom'
+
+export default function CompraExito() {
   return (
-    <section>
+    <section className="text-center">
       <h1>Compra exitosa</h1>
-      <p>Página en construcción.</p>
+      <p>Tu pedido fue procesado. Gracias por comprar en Vinilover.</p>
+      <Link to="/productos" className="btn btn-primary">
+        Seguir comprando
+      </Link>
     </section>
   )
 }
