@@ -1,9 +1,19 @@
-﻿import { useParams, Link } from 'react-router-dom'
+﻿import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import { obtenerProductos } from '../data/productos'
 
 export default function DetalleProducto({ agregarAlCarrito }) {
   const { id } = useParams()
-  const producto = obtenerProductos().find((item) => item.id === id)
+  const [producto, setProducto] = useState(null)
+
+  useEffect(() => {
+    async function cargarProducto() {
+      const productos = await obtenerProductos()
+      setProducto(productos.find((item) => item.id === id) || null)
+    }
+
+    cargarProducto()
+  }, [id])
 
   if (!producto) {
     return (

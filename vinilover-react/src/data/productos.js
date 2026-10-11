@@ -1,4 +1,5 @@
 const CLAVE_PRODUCTOS = 'viniloverProductos'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
 
 export const listaVinilos = [
   {
@@ -58,18 +59,84 @@ export const listaVinilos = [
   },
 ]
 
-export function obtenerProductos() {
+function leerLocal() {
   const datos = localStorage.getItem(CLAVE_PRODUCTOS)
   if (!datos) {
     localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(listaVinilos))
     return listaVinilos
   }
-  const lista = JSON.parse(datos)
-  if (!lista[0]?.categoria) {
+
+  try {
+    const lista = JSON.parse(datos)
+    if (!Array.isArray(lista) || !lista[0]?.categoria) {
+      localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(listaVinilos))
+      return listaVinilos
+    }
+    return lista
+  } catch {
     localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(listaVinilos))
     return listaVinilos
   }
-  return lista
+}
+
+async function pedirJSON(url, opciones = {}) {
+  const respuesta = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(opciones.headers || {}),
+    },
+    ...opciones,
+  })
+
+  const contenido = await respuesta.json().catch(() => null)
+
+  if (!respuesta.ok) {
+    throw new Error(contenido?.error || 'Error en la API de productos')
+  }
+
+  return contenido
+}
+
+export async function obtenerProductos() {
+  try {
+    const productos = await pedirJSON(`${API_URL}/productos`)
+    if (Array.isArray(productos)) {
+      localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos))
+      return productos
+    }
+    return leerLocal()
+  } catch (error) {
+    console.warn('No se pudo conectar a la API; usando datos locales.', error)
+    return leerLocal()
+  }
+}
+
+export async function agregarProducto(producto) {
+  try {
+    const nuevo = await pedirJSON(`${API_URL}/productos`, {
+      method: 'POST',
+      body: JSON.stringify(producto),
+    })
+    return nuevo
+  } catch (error) {
+    const lista = leerLocal()
+    const actualizada = [...lista, producto]
+    localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(actualizada))
+    return producto
+  }
+}
+
+export async function eliminarProducto(id) {
+  try {
+    await pedirJSON(`${API_URL}/productos/${id}`, {
+      method: 'DELETE',
+    })
+    return id
+  } catch (error) {
+    const lista = leerLocal().filter((item) => item.id !== id)
+    localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(lista))
+    return id
+  }
 }
 
 export function guardarProductos(lista) {

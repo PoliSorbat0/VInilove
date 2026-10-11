@@ -1,8 +1,8 @@
-﻿import { useState } from 'react'
-import { obtenerProductos, guardarProductos } from '../data/productos'
+﻿import { useEffect, useState } from 'react'
+import { agregarProducto, eliminarProducto, obtenerProductos } from '../data/productos'
 
 export default function Admin() {
-  const [productos, setProductos] = useState(obtenerProductos())
+  const [productos, setProductos] = useState([])
   const [nombre, setNombre] = useState('')
   const [artista, setArtista] = useState('')
   const [precio, setPrecio] = useState('')
@@ -10,12 +10,16 @@ export default function Admin() {
   const [oferta, setOferta] = useState(false)
   const [imagen, setImagen] = useState('/imagenes/Tool-AEnima.jpg')
 
-  function refrescar(lista) {
-    guardarProductos(lista)
+  async function cargarProductos() {
+    const lista = await obtenerProductos()
     setProductos(lista)
   }
 
-  function agregar(e) {
+  useEffect(() => {
+    cargarProductos()
+  }, [])
+
+  async function agregar(e) {
     e.preventDefault()
     if (!nombre.trim() || !artista.trim() || !precio) return
 
@@ -31,22 +35,24 @@ export default function Admin() {
       descripcion: 'Producto agregado desde el panel admin.',
     }
 
-    refrescar([...productos, nuevo])
+    await agregarProducto(nuevo)
+    await cargarProductos()
     setNombre('')
     setArtista('')
     setPrecio('')
     setOferta(false)
   }
 
-  function borrar(id) {
-    refrescar(productos.filter((item) => item.id !== id))
+  async function borrar(id) {
+    await eliminarProducto(id)
+    await cargarProductos()
   }
 
   return (
     <section>
       <h1 className="mb-4">Panel admin</h1>
       <p className="text-secondary">
-        CRUD local (LocalStorage). Después se puede cambiar por la API de Laragon.
+        CRUD conectado a la API de MySQL. Si la base de datos no responde, el sistema usa un respaldo local.
       </p>
 
       <form className="row g-3 mb-4" onSubmit={agregar}>

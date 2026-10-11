@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-// este seria el hijo que reciva props del padre Productos.jsx que estara con todo de laragon
+
 export default function TarjetaProducto({ id, nombre, artista, precio, imagen, agregarAlCarrito }) {
   return (
     <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center">

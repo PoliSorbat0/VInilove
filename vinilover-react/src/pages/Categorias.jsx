@@ -1,10 +1,20 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import TarjetaProducto from '../components/TarjetaProducto'
 import { obtenerProductos } from '../data/productos'
 
 export default function Categorias({ agregarAlCarrito }) {
   const [categoria, setCategoria] = useState('Todas')
-  const productos = obtenerProductos()
+  const [productos, setProductos] = useState([])
+
+  useEffect(() => {
+    async function cargar() {
+      const data = await obtenerProductos()
+      setProductos(data)
+    }
+
+    cargar()
+  }, [])
+
   const categorias = ['Todas', ...new Set(productos.map((p) => p.categoria))]
 
   const filtrados =

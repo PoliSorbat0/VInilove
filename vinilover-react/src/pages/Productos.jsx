@@ -1,10 +1,19 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import TarjetaProducto from '../components/TarjetaProducto'
 import { obtenerProductos } from '../data/productos'
 
-export default function Productos({ agregarAlCarrito })  {
+export default function Productos({ agregarAlCarrito }) {
   const [busqueda, setBusqueda] = useState('')
-  const listaVinilos = obtenerProductos()
+  const [listaVinilos, setListaVinilos] = useState([])
+
+  useEffect(() => {
+    async function cargar() {
+      const productos = await obtenerProductos()
+      setListaVinilos(productos)
+    }
+
+    cargar()
+  }, [])
 
   const filtrados = listaVinilos.filter((vinilo) => {
     const texto = busqueda.toLowerCase()

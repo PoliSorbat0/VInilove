@@ -1,8 +1,18 @@
-﻿import TarjetaProducto from '../components/TarjetaProducto'
+﻿import { useEffect, useState } from 'react'
+import TarjetaProducto from '../components/TarjetaProducto'
 import { obtenerProductos } from '../data/productos'
 
 export default function Ofertas({ agregarAlCarrito }) {
-  const ofertas = obtenerProductos().filter((p) => p.oferta)
+  const [ofertas, setOfertas] = useState([])
+
+  useEffect(() => {
+    async function cargar() {
+      const productos = await obtenerProductos()
+      setOfertas(productos.filter((p) => p.oferta))
+    }
+
+    cargar()
+  }, [])
 
   return (
     <section>
