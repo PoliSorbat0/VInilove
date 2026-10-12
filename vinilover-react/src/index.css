@@ -1,6 +1,179 @@
 body {
   margin: 0;
-  background: #fff;
-  color: #222;
+  min-height: 100vh;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #120c1c;
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(18, 8, 32, 0.78)),
+    url('/imagenes/FondoTienda.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1, h2, h3, h4, h5, .titulo-principal {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+p, label, .form-label, .navbar-text {
+  color: #f3eef8;
+}
+
+.text-secondary {
+  color: #d7cce6 !important;
+}
+
+a {
+  color: #d4a762;
+}
+
+a:hover {
+  color: #ffb347;
+}
+
+.pm-marquee-wrap {
+  background-color: #2b2055;
+  color: #ffffff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pm-marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.pm-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.navbar-custom {
+  background-color: #1a1235 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #ff8c00 !important;
+}
+
+.navbar-logo {
+  height: 64px;
+  width: 64px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.card,
+.card-producto {
+  background: linear-gradient(180deg, #2a1836 0%, #24132d 100%);
+  color: #fff7f3;
+  border: 1px solid rgba(212, 167, 98, 0.16);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(34, 12, 45, 0.6);
+}
+
+.card-producto {
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card-producto:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 22px 50px rgba(34, 12, 45, 0.7);
+}
+
+.card-producto a,
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-detalle,
+.panel-oscuro {
+  background-color: rgba(26, 16, 43, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+}
+
+.form-control,
+.form-select {
+  background-color: rgba(13, 12, 18, 0.72);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(13, 12, 18, 0.9);
+  color: #ffffff;
+  border-color: #d4a762;
+  box-shadow: 0 0 0 0.2rem rgba(212, 167, 98, 0.25);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.btn-primary {
+  background-color: #d4a762 !important;
+  border-color: #d4a762 !important;
+  color: #111111 !important;
+}
+
+.btn-primary:hover {
+  background-color: #b68543 !important;
+  border-color: #b68543 !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-light:hover {
+  color: #1a1235;
+}
+
+.alert-danger {
+  background-color: rgba(120, 24, 40, 0.9);
+  border-color: #dc3545;
+  color: #fff;
+}
+
+.alert-success {
+  background-color: rgba(20, 90, 50, 0.9);
+  border-color: #198754;
+  color: #fff;
+}
+
+.table {
+  color: #fff;
+}
+
+.footer-tienda {
+  background-color: #1a1235;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }

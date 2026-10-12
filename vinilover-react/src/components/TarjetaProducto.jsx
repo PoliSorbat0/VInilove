@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function TarjetaProducto({ id, nombre, artista, precio, imagen, agregarAlCarrito }) {
   return (
     <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-      <div className="card shadow-sm h-100" style={{ width: '18rem' }}>
+      <div className="card card-producto shadow-sm h-100" style={{ width: '18rem' }}>
         <Link to={`/productos/${id}`}>
           <img src={imagen} className="card-img-top" alt={nombre} />
         </Link>

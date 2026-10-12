@@ -18,10 +18,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          Vinilover
+        <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
+          <img src="/imagenes/LogoViniLove.png" alt="Vinilover" className="navbar-logo" />
+          <span>Vinilover</span>
         </Link>
 
         <div className="navbar-nav flex-row flex-wrap gap-3">
@@ -38,7 +39,7 @@ export default function Navbar() {
         <div className="navbar-nav flex-row flex-wrap gap-2 ms-auto align-items-center">
           {usuario ? (
             <>
-              <span className="navbar-text text-white me-2">
+              <span className="navbar-text me-2">
                 Hola, {usuario.nombre}
               </span>
               <Link className="nav-link" to="/perfil">Perfil</Link>

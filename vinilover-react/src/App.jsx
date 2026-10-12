@@ -52,6 +52,16 @@ function App() {
 
   return (
     <BrowserRouter>
+      <div className="pm-marquee-wrap">
+        <div className="pm-marquee-track">
+          <span className="pm-item">Paga hasta 6 cuotas sin interés</span>
+          <span className="pm-item">5% dcto extra nuevos clientes</span>
+          <span className="pm-item">Envíos a todo Chile</span>
+          <span className="pm-item">Paga hasta 6 cuotas sin interés</span>
+          <span className="pm-item">5% dcto extra nuevos clientes</span>
+          <span className="pm-item">Envíos a todo Chile</span>
+        </div>
+      </div>
       <Navbar />
       <main className="container py-4">
         <Routes>
