@@ -14,6 +14,16 @@ npm run dev
 - **React / pantallas:** `src/pages/`, `src/components/`, `src/App.jsx`
 - **Base de datos (Firebase):** `src/data/firebase.js` y `src/data/productos.js`
 
+
+# vinilover-react
+
+Frontend de la tienda (Vite + React).
+
+```bash
+npm install
+npm run dev
+npm test
+```
 Las páginas están creadas vacías a propósito. No borrar `node_modules` del `.gitignore`.
 
 Currently, two official plugins are available:
