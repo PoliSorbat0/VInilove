@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { validarCorreo, loginUsuario } from '../data/auth'
+import { validarCorreo, loginUsuario, esAdmin } from '../data/auth'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ export default function Login() {
     }
 
     setErrores([])
-    navigate('/')
+    navigate(esAdmin(resultado.usuario) ? '/admin' : '/')
   }
 
   return (
