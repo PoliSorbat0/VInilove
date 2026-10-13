@@ -1,9 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react'
+import * as authData from '../src/data/auth'
 import * as productosData from '../src/data/productos'
 import Admin from '../src/pages/Admin'
 
-describe('Valida que el panel de administración se muestre', () => {
+describe('Admin', () => {
   it('muestra admin', async () => {
+    vi.spyOn(authData, 'esAdmin').mockReturnValue(true)
     vi.spyOn(productosData, 'obtenerProductos').mockResolvedValue([
       { id: 'aenima', nombre: 'Ænima', artista: 'TOOL', precio: 34990, categoria: 'Metal', oferta: false, imagen: '/imagenes/Tool-AEnima.jpg' },
     ])
