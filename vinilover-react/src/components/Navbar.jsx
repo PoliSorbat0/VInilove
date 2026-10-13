@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { obtenerUsuarioActual, cerrarSesion } from '../data/auth'
+import { obtenerUsuarioActual, cerrarSesion, esAdmin } from '../data/auth'
 
 export default function Navbar() {
   const location = useLocation()
@@ -33,7 +33,9 @@ export default function Navbar() {
           <Link className="nav-link" to="/carrito">Carrito</Link>
           <Link className="nav-link" to="/blog">Blog</Link>
           <Link className="nav-link" to="/contacto">Contacto</Link>
-          <Link className="nav-link" to="/admin">Admin</Link>
+          {esAdmin(usuario) && (
+            <Link className="nav-link" to="/admin">Admin</Link>
+          )}
         </div>
 
         <div className="navbar-nav flex-row flex-wrap gap-2 ms-auto align-items-center">
