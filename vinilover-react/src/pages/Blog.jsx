@@ -28,7 +28,7 @@ const articulosBlog = [
     titulo: 'Guía definitiva: ¿Cómo limpiar tus vinilos sin dañarlos?',
     extracto: 'Descubre los mejores métodos, líquidos recomendados y el uso correcto de cepillos antiestáticos.',
     contenidoCompleto: 'El vinilo es un formato delicado que requiere mantenimiento constante para evitar ruidos de estática y saltos en la púa. Te recomendamos usar siempre un cepillo de fibra de carbono antes de reproducir cada disco para remover el polvo superficial. Para limpiezas profundas, utiliza una mezcla de agua destilada con unas gotas de alcohol isopropílico y un paño de microfibra sin pelusa, girando siempre en el sentido de los surcos. Evita tocar la superficie con los dedos para no transferir aceites naturales.',
-    imagen: '/imagenes/limpieza.webp',
+    imagen: '/imagenes/limpieza.jpg',
     enlaceProducto: null,
     fecha: '25 de Septiembre, 2026',
   },
