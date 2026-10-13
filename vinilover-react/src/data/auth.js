@@ -2,6 +2,26 @@ const DOMINIOS_PERMITIDOS = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com', 'vinilo
 const CLAVE_USUARIOS = 'viniLoveUsuarios'
 const CLAVE_SESION = 'viniLoveSesion'
 
+const ADMIN_INICIAL = {
+  run: '19011022K',
+  correo: 'admin@vinilove.com',
+  nombre: 'Admin',
+  apellidos: 'Vinilove',
+  password: 'admin1234',
+  rol: 'admin',
+}
+
+function asegurarAdmin(usuarios) {
+  const existe = usuarios.some(
+    (u) => u.correo.toLowerCase() === ADMIN_INICIAL.correo
+  )
+  if (!existe) {
+    usuarios.push({ ...ADMIN_INICIAL })
+    localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios))
+  }
+  return usuarios
+}
+
 export function validarCorreo(correo) {
   if (!correo) return false
   const partes = correo.split('@')
@@ -16,7 +36,12 @@ export function validarRUN(run) {
 
 export function obtenerUsuarios() {
   const datos = localStorage.getItem(CLAVE_USUARIOS)
-  return datos ? JSON.parse(datos) : []
+  const usuarios = datos ? JSON.parse(datos) : []
+  return asegurarAdmin(Array.isArray(usuarios) ? usuarios : [])
+}
+
+export function esAdmin(usuario = obtenerUsuarioActual()) {
+  return usuario?.rol === 'admin'
 }
 
 export function registrarUsuario(nuevo) {
