@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -19,8 +19,21 @@ import Admin from './pages/Admin'
 import Blog from './pages/Blog'
 import './App.css'
 
+
+function leerCarrito() {
+  try {
+    const datos = localStorage.getItem('viniloverCarrito')
+    return datos ? JSON.parse(datos) : []
+  } catch {
+    return []
+  }
+}
+
 function App() {
-  const [carrito, setCarrito] = useState([])
+  const [carrito, setCarrito] = useState(leerCarrito)
+  useEffect(() => {
+    localStorage.setItem('viniloverCarrito', JSON.stringify(carrito))
+  }, [carrito])
 
   function agregarAlCarrito(producto) {
     setCarrito((listaActual) => {
