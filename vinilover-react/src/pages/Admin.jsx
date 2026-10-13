@@ -1,7 +1,11 @@
 ﻿import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { esAdmin } from '../data/auth'
 import { agregarProducto, eliminarProducto, obtenerProductos } from '../data/productos'
 
 export default function Admin() {
+  const navigate = useNavigate()
+  const [autorizado, setAutorizado] = useState(false)
   const [productos, setProductos] = useState([])
   const [nombre, setNombre] = useState('')
   const [artista, setArtista] = useState('')
@@ -16,8 +20,13 @@ export default function Admin() {
   }
 
   useEffect(() => {
+    if (!esAdmin()) {
+      navigate('/login')
+      return
+    }
+    setAutorizado(true)
     cargarProductos()
-  }, [])
+  }, [navigate])
 
   async function agregar(e) {
     e.preventDefault()
@@ -46,6 +55,10 @@ export default function Admin() {
   async function borrar(id) {
     await eliminarProducto(id)
     await cargarProductos()
+  }
+
+  if (!autorizado) {
+    return <p>Acceso restringido. Entrá con la cuenta admin.</p>
   }
 
   return (
