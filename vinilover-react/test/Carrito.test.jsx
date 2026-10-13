@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Carrito from '../src/pages/Carrito'
 
-describe('Carrito', () => {
+describe('Valida que el carrito se muestre', () => {
   it('muestra el carrito', () => {
     render(
       <Carrito

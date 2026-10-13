@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Checkout from '../src/pages/Checkout'
 
-describe('Checkout', () => {
+describe('Valida que el checkout se muestre', () => {
   it('muestra checkout', () => {
     render(<Checkout carrito={[{ id: 'aenima', nombre: 'Ænima', precio: 34990, cantidad: 1 }]} />)
 

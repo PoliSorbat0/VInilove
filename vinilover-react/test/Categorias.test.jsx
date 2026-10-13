@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import * as productosData from '../src/data/productos'
 import Categorias from '../src/pages/Categorias'
 
-describe('Categorias', () => {
+describe('Valida que las categorías se muestren', () => {
   it('muestra categorías', async () => {
     vi.spyOn(productosData, 'obtenerProductos').mockResolvedValue([
       { id: 'aenima', nombre: 'Ænima', artista: 'TOOL', precio: 34990, categoria: 'Metal', oferta: false, imagen: '/imagenes/Tool-AEnima.jpg' },

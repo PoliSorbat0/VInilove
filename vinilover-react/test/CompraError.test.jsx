@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import CompraError from '../src/pages/CompraError'
 
-describe('CompraError', () => {
+describe('Valida que se muestre el error de pago', () => {
   it('muestra un error', () => {
     render(<CompraError />)
 

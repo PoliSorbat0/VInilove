@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Inicio from '../src/pages/Inicio'
 
-describe('Inicio', () => {
+describe('Valida que la página de inicio se muestre', () => {
   it('muestra inicio', () => {
     render(<Inicio />)
 

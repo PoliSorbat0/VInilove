@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import Login from '../src/pages/Login'
 
-describe('Login', () => {
+describe('Valida que los errores del login se muestren', () => {
   it('muestra error', () => {
     render(<Login />)
 

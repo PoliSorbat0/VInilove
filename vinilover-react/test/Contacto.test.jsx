@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import Contacto from '../src/pages/Contacto'
 
-describe('Contacto', () => {
+describe('Valida que el formulario de contacto funcione', () => {
   it('valida el formulario', () => {
     render(<Contacto />)
 

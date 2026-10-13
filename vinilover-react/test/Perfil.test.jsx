@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import * as authData from '../src/data/auth'
 import Perfil from '../src/pages/Perfil'
 
-describe('Perfil', () => {
+describe('Valida que el perfil del usuario se muestre', () => {
   it('muestra perfil', () => {
     vi.spyOn(authData, 'obtenerUsuarioActual').mockReturnValue({
       nombre: 'Ana',

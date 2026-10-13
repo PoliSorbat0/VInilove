@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import Registro from '../src/pages/Registro'
 
-describe('Registro', () => {
+describe('Valida que el formulario de registro valide los datos', () => {
   it('valida registro', () => {
     render(<Registro />)
 

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import CompraExito from '../src/pages/CompraExito'
 
-describe('CompraExito', () => {
+describe('Valida que se muestre la confirmación de compra exitosa', () => {
   it('muestra éxito', () => {
     render(<CompraExito />)
 
